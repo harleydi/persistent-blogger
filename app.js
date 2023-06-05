@@ -10,6 +10,7 @@ mongooseConnect()
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const blogsRouter = require('./routes/blogs')
+const authorRouter = require('./routes/authors')
 
 var app = express();
 
@@ -22,5 +23,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/blogs', blogsRouter)
+app.use('/authors', authorRouter)
 
 module.exports = app;
