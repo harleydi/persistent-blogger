@@ -5,7 +5,7 @@ const blogSchema = new mongoose.Schema({
     _id: { type: String, default: () => uuid()},
     title: { type: String, required: true },
     content: { type: String, required: true },
-    author: { type: mongoose.Schema.Types.ObjectId, ref: 'Author' },
+    author: { type: String, ref: 'Author' },
     lastModified: { type: Date, default: Date.now },
     createdAt: { type: Date, default: Date.now }
 })

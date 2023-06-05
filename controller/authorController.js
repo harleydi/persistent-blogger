@@ -23,7 +23,7 @@ const getAllAuthors = async (req, res) => {
 const getAuthorById = async (req, res) => {
     try {
         const author = await Author.find({ _id: req.params.id })
-        res.status(200).json({ success: true, data: savedAuthor })
+        res.status(200).json({ success: true, data: author })
     } catch (error) {
         res.status(400).json({ success: false, message: error.message })
     }
@@ -31,8 +31,8 @@ const getAuthorById = async (req, res) => {
 
 const updateAuthor = async (req, res) => {
     try {
-        const updatedAuthor = await Author.findOneAndUpdate({ _id: req.params.id })
-        res.status(200).json({ success: true, data: savedAuthor })
+        const updatedAuthor = await Author.findOneAndUpdate({ _id: req.params.id }, req.body)
+        res.status(200).json({ success: true, message: "Author updated" })
     } catch (error) {
         res.status(400).json({ success: false, message: error.message })
     }
@@ -40,8 +40,8 @@ const updateAuthor = async (req, res) => {
 
 const deleteAuthor = async (req, res) => {
     try {
-        const deleted = await new Author.findOneAndDelete({ _id: id })
-        res.status(200).json({ success: true, data: savedAuthor })
+        const deleted = await Author.findOneAndDelete({ _id: req.params.id })
+        res.status(200).json({ success: true, message: "Author deleted" })
     } catch (error) {
         res.status(400).json({ success: false, message: error.message })
     }
